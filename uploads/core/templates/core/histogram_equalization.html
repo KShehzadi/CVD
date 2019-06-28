@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h2 style="text-align: center;"> Histogram Equalization </h2>
+  {% if uploaded_file_url %}
+  <div class="column" style="font-size:80%; text-align:center;"><img width="25%" height="25%" src="{{ uploaded_file_url }}" alt="alternate text" style="padding-bottom:0.5em;" /></div>
+  <div  style="font-size:80%; text-align:center;">Original Image</div>
+
+  <div class="column" style="font-size:80%; text-align:center;"><img  width="25%" height="25%" src="{{ nuploaded_file_url }}" alt="alternate text" style="padding-bottom:0.5em;" /></div> 
+  <div style="font-size:80%; text-align:center;">Histogram Equalized Image</div>
+  {% endif %}
+   <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <p></p>
+    <button type="submit">Apply Histogram Equalization</button>
+  </form>
+  
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}

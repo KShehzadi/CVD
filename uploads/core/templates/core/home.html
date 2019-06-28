@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">Chapter 3: Intensity Transform and Spatial Filters </h2>
+<h3>Topic 3.2: Intensity Transform Function</h3>
+  <ul>
+     <li>
+     <a href="{% url 'negative_filter' %}">Negative Filter </a>
+    </li>
+     <li>
+     <a href="{% url 'gamma_correction_filter' %}">Gamma Correction Filter </a>
+    </li>
+    
+  </ul>
+<h3>Topic 3.3: Histogram Processing and Function Plotting</h3>
+  <ul>
+    <li>
+     <a href="{% url 'histogram_equalization' %}">Histogram Equalization </a>
+    </li>
+    <li>
+     <a href="{% url 'histogram_match' %}">Histogram Matching</a>
+    </li>
+  </ul>
+  <h3>Topic 3.3: Spatial Filters</h3>
+  <h4>Linear Filters</h4>
+  <ul>
+    <li>
+     <a href="{% url 'Linear_Averaging' %}">Averaging Filter</a>
+    </li>
+     <li>
+     <a href="{% url 'Linear_Gaussian' %}">Gaussian Filter</a>
+    </li>
+    <li>
+     <a href="{% url 'Linear_Laplacian' %}">Laplacian Filter</a>
+    </li>
+  </ul>
+{% endblock %}

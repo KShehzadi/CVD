@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h2 style="text-align: center;"> Histogram Matching </h2>
+{% if uploaded_file_url %}
+
+<div class="column" style="font-size:80%; text-align:center;"><img width="25%" height="25%" src="{{ uploaded_file_url }}" alt="alternate text" style="padding-bottom:0.5em;" /></div>
+<div style="font-size:80%; text-align:center;">Original Image</div>
+<div class="column" style="font-size:80%; text-align:center;"><img width="25%" height="25%" src="{{ uploaded_file_url1 }}" alt="alternate text" style="padding-bottom:0.5em;" /></div> 
+<div style="font-size:80%; text-align:center;">Specified Image</div>
+<div class="column" style="font-size:80%; text-align:center;"><img  width="25%" height="25%" src="{{ nuploaded_file_url }}" alt="alternate text" style="padding-bottom:0.5em;" /></div>
+<div style="font-size:80%; text-align:center;">Histogram Matched</div>
+
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+    <label for="myfile">Select File:</label>
+    <input type="file" name="myfile">
+    </div>
+    <div>
+    <label for="myfile1">Select Specified File:</label>
+    <input type="file" name="myfile1">
+    </div>
+    <p></p>
+    <button type="submit">Apply Histogram Matching</button>
+</form>
+
+
+<p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}
