@@ -3,9 +3,9 @@
 {% load static %}
 
 {% block content %}
-<h2 style="text-align: center;"> Gamma Correction Filter </h2>
+<h2 style="text-align:center;"> LOG Filter </h2>
   {% if uploaded_file_url %}
-  
+ 
 <div class="row">
 <div class="col-md-6" style="font-size:80%; text-align:center; display: inline;">
     <div width="40%" height="50%">
@@ -17,18 +17,22 @@
 <div class="col-md-6" style="font-size:80%; text-align:center; display: inline;">
     <div width="40%" height="50%">
     <img style="border: solid;" class="" width="100%" height="100%" src="{{ nuploaded_file_url }}" alt="alternate text" style="padding-bottom:0.5em;" />
-  <p style="display: block;">Gamma Correction Applied Image</p>  
+  <p style="display: block;">LOG Applied Image</p>  
     </div>
 </div>
 </div>
- {% endif %}
+
+  {% endif %}
    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="myfile">
     <p></p>
-    <label for="gamma">Enter Gamma Value:</label>
-    <input type="text" name="gamma">
-    <button type="submit">Apply Gamma Correction</button>
+    <label for="kernelgaussian">Enter Gaussian Kernel Value:</label>
+    <input type="text" name="kernelgaussian">
+    <p></p>
+    <label for="kernellaplacian">Enter Laplacian Kernel Value:</label>
+    <input type="text" name="kernellaplacian">
+    <button type="submit">Apply LOG</button>
   </form>
   
 

@@ -31,6 +31,53 @@ def negative_filter(request):
             'uploaded_file_url': uploaded_file_url, 'nuploaded_file_url':nuploaded_file_url
         })
     return render(request, 'core/negative_filter.html')
+
+def NonLinear_Median_filter(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        if request.POST['Median']:
+            medianvalue = int(request.POST['Median'])
+        else:
+            medianvalue = 1
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        file = cv2.imread('C:/djangosample2/simple-file-upload/'+uploaded_file_url,1)
+        medianfile = cv2.medianBlur(file, medianvalue)
+        cv2.imwrite("media/medianfile.png", medianfile)
+        nuploaded_file_url = fs.url('medianfile.png')
+        return render(request, 'core/NonLinear_Median_filter.html', {
+            'uploaded_file_url': uploaded_file_url, 'nuploaded_file_url':nuploaded_file_url
+        })
+    return render(request, 'core/NonLinear_Median_filter.html')
+def Linear_LOG(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        if request.POST['kernelgaussian']:
+            kernelgaussian = int(request.POST['kernelgaussian'])
+        else:
+            kernelgaussian = 1
+
+        if request.POST['kernellaplacian']:
+            kernellaplacian = int(request.POST['kernellaplacian'])
+        else:
+            kernellaplacian = 1
+
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        file = cv2.imread('C:/djangosample2/simple-file-upload/'+uploaded_file_url,1)
+        img = cv2.cvtColor(file, cv2.COLOR_BGR2GRAY)
+        kernel_size = (kernelgaussian,kernelgaussian)
+        blur = cv2.GaussianBlur(img,kernel_size,0)
+        log = cv2.Laplacian(blur,cv2.CV_64F,ksize=kernellaplacian)
+        cv2.imwrite("media/log.png", log)
+        nuploaded_file_url = fs.url('log.png')
+        return render(request, 'core/Linear_LOG.html', {
+            'uploaded_file_url': uploaded_file_url, 'nuploaded_file_url':nuploaded_file_url
+        })
+    return render(request, 'core/Linear_LOG.html')
+
 def Linear_Averaging(request):
     if request.method == 'POST' and request.FILES['myfile']:
         if request.POST['Averaging']:

@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'^uploads/Linear_Averaging/$', views.Linear_Averaging, name='Linear_Averaging'),
     url(r'^uploads/Linear_Gaussian/$', views.Linear_Gaussian, name='Linear_Gaussian'),
     url(r'^uploads/Linear_Laplacian/$', views.Linear_Laplacian, name='Linear_Laplacian'),
+    url(r'^uploads/NonLinear_Median_filter/$', views.NonLinear_Median_filter, name='NonLinear_Median_filter'),
+    url(r'^uploads/Linear_LOG/$', views.Linear_LOG, name='Linear_LOG'),
+   
     url(r'^admin/', admin.site.urls),
 ]
 
